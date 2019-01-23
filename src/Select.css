@@ -1,0 +1,41 @@
+.SelectContainer {
+  position: relative;
+  cursor: pointer;
+  margin-left: 30px;
+  width: 150px;
+}
+
+.SelectButton {
+  background-color: #111111;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.0), 0 6px 20px 0 rgba(0, 0, 0, 0.9);
+  width: 150px;
+  border: none;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+}
+
+.SelectItems {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;  
+  background-color: #111111;
+  border-radius: 3px;
+  width: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.0), 0 6px 20px 0 rgba(0, 0, 0, 0.9);
+  overflow: scroll;
+}
+
+.SelectItem {
+  font-weight: 300;
+  padding: 20px;
+}
+
+.SelectItem:hover {
+  background-color: #222222;
+}

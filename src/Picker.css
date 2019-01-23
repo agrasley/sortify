@@ -1,0 +1,8 @@
+.Picker {
+  padding-top: 50px;
+}
+
+.SearchBox {
+  display: flex;
+  justify-content: center;
+}

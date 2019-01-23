@@ -1,0 +1,7 @@
+.TableGrid {
+  display: grid;
+  grid-template-rows: calc(100vh - 292px);
+  grid-template-columns: 1fr;
+  overflow: scroll;
+  padding: 30px;
+}

@@ -1,0 +1,38 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #DCDCDC;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background: linear-gradient(#222222, #555555);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border-top: 1px solid #666666;
+  font-weight: 300;
+  padding: 5px;
+  font-size: 14px;
+}
+
+th {
+  cursor: pointer;
+  text-align: left;
+}
