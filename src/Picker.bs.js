@@ -15,7 +15,7 @@ require("./Picker.css");
 
 var component = ReasonReact.reducerComponent("Picker");
 
-function make(handleItemClick, handleSearchSubmit, _children) {
+function make(handleItemClick, handleSearchSubmit, token, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -30,7 +30,7 @@ function make(handleItemClick, handleSearchSubmit, _children) {
               var handleSubmit = function (q) {
                 if (q.length !== 0) {
                   Curry._1(handleSearchSubmit, /* () */0);
-                  SpotifyAPI$ReactTemplate.Request[/* searchHack */11](q).then((function (fromJSON) {
+                  SpotifyAPI$ReactTemplate.Request[/* search */6](token, q).then((function (fromJSON) {
                           return Promise.resolve(Curry._1(self[/* send */3], /* SetItems */[$$Array.map(Data$ReactTemplate.searchItemAdapter, fromJSON)]));
                         }));
                   return /* () */0;

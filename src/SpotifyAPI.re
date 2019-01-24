@@ -127,10 +127,10 @@ module Request = {
       |> then_(json => json |> Decode.audioFeatures |> resolve)
   );
 
-  let token = "BQBQg-e0BH2D6HIrIvhxhbXuIUwgQvg3SjDpdyrKGHlmKtZ1sOvUb_nu1_CL3F6ANv6BHBzOKc-SYcXm8QrCBdXeEBelAMKOcEClJMbdshuqMcAvgGFa7JC_vPGlYvXZTYYPV0IZNlfNelpf-rYOws-EzqHJbUk0GUetbunhEQ";
+  /* let token = "BQBQg-e0BH2D6HIrIvhxhbXuIUwgQvg3SjDpdyrKGHlmKtZ1sOvUb_nu1_CL3F6ANv6BHBzOKc-SYcXm8QrCBdXeEBelAMKOcEClJMbdshuqMcAvgGFa7JC_vPGlYvXZTYYPV0IZNlfNelpf-rYOws-EzqHJbUk0GUetbunhEQ";
 
   let searchHack = search(token);
   let getAlbumHack = getAlbum(token);
   let getTracksHack = getTracks(token);
-  let getAudioFeaturesHack = getAudioFeatures(token);
+  let getAudioFeaturesHack = getAudioFeatures(token); */
 };

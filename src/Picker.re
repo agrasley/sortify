@@ -11,7 +11,7 @@ type action =
 
 let component = ReasonReact.reducerComponent("Picker");
 
-let make = (~handleItemClick, ~handleSearchSubmit, _children) => {
+let make = (~handleItemClick, ~handleSearchSubmit, ~token, _children) => {
   ...component,
   initialState: () => { /* searchType: Data.ArtistT, */ items: [||] },
   reducer: (action, _state) =>
@@ -38,7 +38,7 @@ let make = (~handleItemClick, ~handleSearchSubmit, _children) => {
       if (String.length(q) > 0) {
         handleSearchSubmit();
         Js.Promise.(
-          SpotifyAPI.Request.searchHack(q) |> then_(fromJSON =>
+          SpotifyAPI.Request.search(token, q) |> then_(fromJSON =>
             self.send(SetItems(fromJSON |> Array.map(Data.searchItemAdapter)))
             |> resolve
           ) |> ignore
