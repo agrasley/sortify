@@ -26,8 +26,6 @@ function getTokenFromHash(str) {
   
 }
 
-var spotifyAccountsUrl = "https://accounts.spotify.com/authorize?client_id=af50ed257bcb4783bb2d86c74b7c54a1&redirect_uri=https:%2F%2Fagrasley.github.io%2Fsortify&response_type=token";
-
 function make(_children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
@@ -41,10 +39,10 @@ function make(_children) {
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (self) {
               var handleItemClick = function (searchItem) {
-                SpotifyAPI$ReactTemplate.Request[/* getAlbum */7](self[/* state */1][/* token */1], searchItem[/* id */1]).then((function (trackIds) {
+                SpotifyAPI$ReactTemplate.Request[/* getAlbum */9](self[/* state */1][/* token */1], searchItem[/* id */1]).then((function (trackIds) {
                           return Promise.all(/* tuple */[
-                                      SpotifyAPI$ReactTemplate.Request[/* getTracks */8](self[/* state */1][/* token */1], trackIds),
-                                      SpotifyAPI$ReactTemplate.Request[/* getAudioFeatures */9](self[/* state */1][/* token */1], trackIds)
+                                      SpotifyAPI$ReactTemplate.Request[/* getTracks */10](self[/* state */1][/* token */1], trackIds),
+                                      SpotifyAPI$ReactTemplate.Request[/* getAudioFeatures */11](self[/* state */1][/* token */1], trackIds)
                                     ]);
                         })).then((function (param) {
                         var sortedTracks = Belt_SortArray.stableSortBy(param[0], (function (a, b) {
@@ -64,7 +62,7 @@ function make(_children) {
             }),
           /* initialState */(function (param) {
               var optionToken = getTokenFromHash(ReasonReact.Router[/* dangerouslyGetInitialUrl */3](/* () */0)[/* hash */1]);
-              var token = optionToken !== undefined ? optionToken : document.location.replace(spotifyAccountsUrl);
+              var token = optionToken !== undefined ? optionToken : SpotifyAPI$ReactTemplate.Request[/* redirectToAuth */1](/* () */0);
               return /* record */[
                       /* songs : array */[],
                       /* token */token
@@ -83,6 +81,5 @@ function make(_children) {
 
 exports.component = component;
 exports.getTokenFromHash = getTokenFromHash;
-exports.spotifyAccountsUrl = spotifyAccountsUrl;
 exports.make = make;
 /* component Not a pure module */

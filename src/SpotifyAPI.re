@@ -82,6 +82,9 @@ module Decode = {
 };
 
 module Request = {
+  [@bs.val] external replaceLocation: string => 'a = "document.location.replace";
+  let spotifyAccountsUrl = "https://accounts.spotify.com/authorize?client_id=af50ed257bcb4783bb2d86c74b7c54a1&redirect_uri=https:%2F%2Fagrasley.github.io%2Fsortify&response_type=token";
+  let redirectToAuth = () => replaceLocation(spotifyAccountsUrl);
   let apiUrl = "https://api.spotify.com/v1";
   let searchUrl = (q: string) => {j|$(apiUrl)/search?q=$(q)&type=album&limit=5&market=US|j};
   let albumUrl = (id: string) => {j|$(apiUrl)/albums/$(id)?market=US|j};
@@ -107,6 +110,13 @@ module Request = {
           ()
         )
       )
+      |> then_(response => {
+        let status = response |> Fetch.Response.status;
+        if (status === 401) {
+          redirectToAuth();
+        };
+        response |> resolve;
+      })
       |> then_(Fetch.Response.json)
     );
   
@@ -126,11 +136,4 @@ module Request = {
     makeRequest(token, audioFeaturesUrl(ids))
       |> then_(json => json |> Decode.audioFeatures |> resolve)
   );
-
-  /* let token = "BQBQg-e0BH2D6HIrIvhxhbXuIUwgQvg3SjDpdyrKGHlmKtZ1sOvUb_nu1_CL3F6ANv6BHBzOKc-SYcXm8QrCBdXeEBelAMKOcEClJMbdshuqMcAvgGFa7JC_vPGlYvXZTYYPV0IZNlfNelpf-rYOws-EzqHJbUk0GUetbunhEQ";
-
-  let searchHack = search(token);
-  let getAlbumHack = getAlbum(token);
-  let getTracksHack = getTracks(token);
-  let getAudioFeaturesHack = getAudioFeatures(token); */
 };
