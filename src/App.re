@@ -16,17 +16,13 @@ let getTokenFromHash = str => {
   }
 };
 
-[@bs.val] external replaceLocation: string => 'a = "document.location.replace";
-
-let spotifyAccountsUrl = "https://accounts.spotify.com/authorize?client_id=af50ed257bcb4783bb2d86c74b7c54a1&redirect_uri=https:%2F%2Fagrasley.github.io%2Fsortify&response_type=token";
-
 let make = _children => {
   ...component,
   initialState: () => {
     let optionToken = ReasonReact.Router.dangerouslyGetInitialUrl().hash |> getTokenFromHash;
     let token = switch(optionToken) {
     | Some(token) => token
-    | None => replaceLocation(spotifyAccountsUrl)
+    | None => SpotifyAPI.Request.redirectToAuth();
     };
     {
       songs: [||],

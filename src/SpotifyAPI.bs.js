@@ -90,6 +90,12 @@ var Decode = /* module */[
   /* audioFeatures */audioFeatures
 ];
 
+var spotifyAccountsUrl = "https://accounts.spotify.com/authorize?client_id=af50ed257bcb4783bb2d86c74b7c54a1&redirect_uri=https:%2F%2Fagrasley.github.io%2Fsortify&response_type=token";
+
+function redirectToAuth(param) {
+  return document.location.replace(spotifyAccountsUrl);
+}
+
 var apiUrl = "https://api.spotify.com/v1";
 
 function searchUrl(q) {
@@ -112,9 +118,15 @@ function audioFeaturesUrl(ids) {
 
 function makeRequest(token, url) {
   return fetch(url, Fetch.RequestInit[/* make */0](/* Get */0, {
-                      Accept: "application/json",
-                      Authorization: "Bearer " + (String(token) + "")
-                    }, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* () */0)).then((function (prim) {
+                        Accept: "application/json",
+                        Authorization: "Bearer " + (String(token) + "")
+                      }, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined)(/* () */0)).then((function (response) {
+                  var status = response.status;
+                  if (status === 401) {
+                    document.location.replace(spotifyAccountsUrl);
+                  }
+                  return Promise.resolve(response);
+                })).then((function (prim) {
                 return prim.json();
               }));
 }
@@ -144,6 +156,8 @@ function getAudioFeatures(token, ids) {
 }
 
 var Request = /* module */[
+  /* spotifyAccountsUrl */spotifyAccountsUrl,
+  /* redirectToAuth */redirectToAuth,
   /* apiUrl */apiUrl,
   /* searchUrl */searchUrl,
   /* albumUrl */albumUrl,
