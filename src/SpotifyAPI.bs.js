@@ -143,24 +143,6 @@ function getAudioFeatures(token, ids) {
               }));
 }
 
-var token = "BQBQg-e0BH2D6HIrIvhxhbXuIUwgQvg3SjDpdyrKGHlmKtZ1sOvUb_nu1_CL3F6ANv6BHBzOKc-SYcXm8QrCBdXeEBelAMKOcEClJMbdshuqMcAvgGFa7JC_vPGlYvXZTYYPV0IZNlfNelpf-rYOws-EzqHJbUk0GUetbunhEQ";
-
-function searchHack(param) {
-  return search(token, param);
-}
-
-function getAlbumHack(param) {
-  return getAlbum(token, param);
-}
-
-function getTracksHack(param) {
-  return getTracks(token, param);
-}
-
-function getAudioFeaturesHack(param) {
-  return getAudioFeatures(token, param);
-}
-
 var Request = /* module */[
   /* apiUrl */apiUrl,
   /* searchUrl */searchUrl,
@@ -171,12 +153,7 @@ var Request = /* module */[
   /* search */search,
   /* getAlbum */getAlbum,
   /* getTracks */getTracks,
-  /* getAudioFeatures */getAudioFeatures,
-  /* token */token,
-  /* searchHack */searchHack,
-  /* getAlbumHack */getAlbumHack,
-  /* getTracksHack */getTracksHack,
-  /* getAudioFeaturesHack */getAudioFeaturesHack
+  /* getAudioFeatures */getAudioFeatures
 ];
 
 exports.Decode = Decode;
